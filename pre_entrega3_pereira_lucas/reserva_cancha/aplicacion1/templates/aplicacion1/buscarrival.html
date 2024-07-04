@@ -1,0 +1,93 @@
+{% extends 'aplicacion1/index.html' %}
+
+
+{% block botonescentrales %}
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    
+                    {% block titulo %}
+                    <h1 class="display-5 fw-bolder text-white mb-2">BUSCAR RIVAL</h1>
+                    <p class="lead text-white-50 mb-4">los siguientes equipos buscan rival</p>
+                    {% endblock titulo %}
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock botonescentrales %}
+
+
+
+    
+
+
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre Cancha</th>
+                        <th>Hora de reserva</th>
+                        <th>Dia</th>
+                        <th>Nombre Equipo</th>
+                        <th>Numero Celular</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in Buscarrival %}
+                    <tr>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.nombre_cancha }}</td>
+                        <td>{{ c.hora_reserva }}</td>
+                        <td>{{ c.dia_reserva }}</td>
+                        <td>{{ c.tu_equipo }}</td>
+                        <td>{{ c.numero_celular }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
+    
+    {% endblock contenido %}
+    
+    
+    {% block inicio %}
+    
+    {% block buscarrival %}
+        <h2 class="h4 fw-bolder">Buscar rival</h2>
+        <p>Aqui encontraras la disponibilidad de otros equipos o podras anotarte tu para jugar contra otros 'las reglas y condiciones las acordaran dichos equipos'. </p>
+        <a class="text-decoration-none" href="{% url 'buscarrivalForm'%}">
+            anotarme
+            <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+        
+    {% endblock buscarrival %}
+        
+    {% endblock inicio %}
+        
+    
+    
+    
+    
+ 

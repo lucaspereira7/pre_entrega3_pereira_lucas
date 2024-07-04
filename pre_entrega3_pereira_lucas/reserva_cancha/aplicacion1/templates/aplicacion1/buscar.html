@@ -1,0 +1,15 @@
+{% extends 'aplicacion1/index.html' %}
+
+
+
+
+{% block buscar %}
+<form action="{% url 'encontrarCancha' %}" method="get">
+    {% csrf_token %}
+    <table>
+        <h1> la cancha se buscara en Eventos </h1>
+        <p>ingrese nombre de la cancha<input type="text" name="buscar" id="buscar"></p>
+    </table>
+    <input type="submit" value="Buscar">
+</form>
+{% endblock buscar %}

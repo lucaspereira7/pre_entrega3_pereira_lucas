@@ -1,0 +1,92 @@
+{% extends 'aplicacion1/index.html' %}
+
+
+{% block botonescentrales %}
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    
+                    {% block titulo %}
+                    <h1 class="display-5 fw-bolder text-white mb-2">RESERVAS PARA EVENTO</h1>
+                    <p class="lead text-white-50 mb-4">las siguientes horas ya estan ocupadas</p>
+                    {% endblock titulo %}
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock botonescentrales %}
+
+
+
+
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre cancha</th>
+                        <th>Hora de reserva</th>
+                        <th>Cantidad de horas</th>
+                        <th>Dia</th>
+                        <th>tipo de evento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in Reservarevento %}
+                    <tr>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.nombre_cancha }}</td>
+                        <td>{{ c.hora_reserva }}</td>
+                        <td>{{ c.cantidad_horas }}</td>
+                        <td>{{ c.dia_reserva }}</td>
+                        <td>{{ c.tipo_evento }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
+    
+    {% endblock contenido %}
+    
+    
+    
+    {% block inicio %}
+    <div class="col-lg-4">
+                    
+        <h2 class="h4 fw-bolder">Reserva evento</h2>
+        <p>Encuentra aqui tu mejor opcion para realizar un cumpleaños, entrenamiento o evento donde su duracion pase los 60minutos</p>
+        <a class="text-decoration-none" href="{% url 'reservareventoForm'%}">
+            Reservar Evento
+            <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+</div>
+</div>
+    {% block reservarevento %}
+        
+    {% endblock reservarevento %}
+        
+    
+    {% endblock inicio %}
+    
+    

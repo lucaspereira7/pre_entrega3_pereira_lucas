@@ -1,0 +1,85 @@
+{% extends 'aplicacion1/index.html' %}
+
+
+{% block botonescentrales %}
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    
+                    {% block titulo %}
+                    <h1 class="display-5 fw-bolder text-white mb-2">RESERVAS DE CANCHA</h1>
+                    <p class="lead text-white-50 mb-4">las siguientes opciones ya estan ocupadas</p>
+                    {% endblock titulo %}
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock botonescentrales %}
+
+
+
+
+
+
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Celular</th>
+                        <th>Nombre cancha</th>
+                        <th>Hora de reserva</th>
+                        <th>Dia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in Reservarcancha %}
+                    <tr>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.nombre }}</td>
+                        <td>{{ c.numero_celular }}</td>
+                        <td>{{ c.nombre_cancha }}</td>
+                        <td>{{ c.hora_reserva }}</td>
+                        <td>{{ c.dia_reserva }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
+    
+    {% endblock contenido %}
+    
+    {% block inicio %}
+    
+    {% block reservarcancha %}
+                
+                <h2 class="h4 fw-bolder">Reservar cancha</h2>
+                <p>Encuentra la cancha que mejor se adapte a tus busquedas y diviertete con tus amig@s</p>
+                <a class="text-decoration-none" href="{% url 'reservarcanchaForm'%}">
+                    Reservar
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            {% endblock reservarcancha %}
+            
+            {% endblock inicio %}
